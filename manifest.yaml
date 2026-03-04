@@ -16,6 +16,11 @@ spec:
   tensorboard:
     enabled: true
 
+  storage:
+   attachExistingPVCs:
+    - name: mchennoufi-p-f41bb5ca8c5d42f8-kyber-pvc-33a7e00a26e24330
+      mountPoint: /mnt/mchennoufi-p-f41bb5ca8c5d42f8-kyber-pvc-33a7e00a26e24330
+
   types:
     worker:
       count: 2
