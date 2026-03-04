@@ -8,12 +8,12 @@ builder:
   context: smoke-test # smoke-test folder
   dockerfile: ./build/ray.Dockerfile # need ray installed
 
+engineName: mchennoufi-e-05e3150c57074406
 
 spec:
   operator: kuberay
   image: image
   command: "python3 -u main.py --operator=kuberay --sleep=300 --tb-write=True"
-  engineName: main-gcp-dev-2
 
   debug:
     jupyter: false
