@@ -11,8 +11,8 @@ builder:
 spec:
   operator: jobset
   image: image
-  command: "python3 -u main.py --operator=jobset --sleep=300"
-  engineName: main-aws-dev
+  command: "python3 -u main.py --operator=jobset --sleep=500"
+  timeout: "3m"
 
   types:
     master:
