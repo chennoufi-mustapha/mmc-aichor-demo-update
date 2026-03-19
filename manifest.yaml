@@ -5,35 +5,27 @@ apiVersion: 0.2.2
 
 builder:
   image: image
-  context: smoke-test #    smoke-test folder
-  dockerfile: ./build/ray.Dockerfile # need ray installed
+  context: smoke-test # smoke-test folder
+  dockerfile: ./build/Dockerfile
 
 spec:
-  operator: kuberay
+  operator: jobset
   image: image
-  command: "python3 -u main.py --operator=kuberay --sleep=300 --tb-write=True"
-  storage:
-   attachExistingPVCs:
-    - name: mchennoufi-d-01171d57959e42cd-pvc-kyber-7033bc3ec4a84e39
-      mountPoint: /mnt/mchennoufi-d-01171d57959e42cd-pvc-kyber-7033bc3ec4a84e39
-
-
-  debug:
-    jupyter: false
+  command: "python3 -u main.py --operator=jobset --sleep=300 --tb-write=True"
 
   tensorboard:
     enabled: true
 
   types:
-    Head:
+    master:
+      count: 1
       resources:
         cpus: 1
         ramRatio: 2
-
-    Workers:
-      - name: cpu-workers
-        count: 1
-        resources:
-          cpus: 1
-          ramRatio: 2
-          shmSizeGB: 0
+        shmSizeGB: 0
+    worker:
+      count: 1
+      resources:
+        cpus: 1
+        ramRatio: 2
+        shmSizeGB: 0
