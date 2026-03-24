@@ -11,8 +11,11 @@ builder:
 spec:
   operator: jobset
   image: image
-  command: "python3 -u main.py --operator=jobset --sleep=300 --tb-write=True"
-  engineName: test-qa-kyber
+  command: "python3 -u main.py --operator=jobset --sleep=500 --tb-write=True"
+  storage:
+   attachExistingPVCs:
+    - name: mchennoufi-d-577440228dc04b13-tensorboard-e353c89345ff4729
+      mountPoint: /mnt/mchennoufi-d-577440228dc04b13-tensorboard-e353c89345ff4729
 
   tensorboard:
     enabled: true
