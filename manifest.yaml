@@ -12,10 +12,7 @@ spec:
   operator: jobset
   image: image
   command: "python3 -u main.py --operator=jobset --sleep=500 --tb-write=True"
-  storage:
-   attachExistingPVCs:
-    - name: mchennoufi-d-577440228dc04b13-tensorboard-e353c89345ff4729
-      mountPoint: /mnt/mchennoufi-d-577440228dc04b13-tensorboard-e353c89345ff4729
+  engineName: main-gcp-dev-v2
 
   tensorboard:
     enabled: true
