@@ -8,10 +8,6 @@ from src.operators.pytorch import pytorchop
 from src.operators.xgboost import xgboostop
 from src.operators.jobset import jobsetop
 
-INPUT_PATH = os.environ.get("AICHOR_INPUT_PATH", "input")
-OUTPUT_PATH = os.environ.get("AICHOR_OUTPUT_PATH", "output")
-LOGS_PATH = os.environ.get("AICHOR_TENSORBOARD_PATH", "logs")
-
 OPERATOR_TABLE = {
         "ray": rayop,
         "kuberay": rayop,
@@ -31,9 +27,9 @@ if __name__ == "__main__":
         print(os.environ["AICHOR_USER_EMAIL"])
         print(os.environ["AICHOR_CLUSTER_NAME"])
         print(os.environ["VCS_TYPE"])
-        print(INPUT_PATH)
-        print(OUTPUT_PATH)
-        print(LOGS_PATH)
+        print(os.environ["AICHOR_INPUT_PATH"])
+        print(os.environ["AICHOR_OUTPUT_PATH"])
+        print(os.environ["AICHOR_TENSORBOARD_PATH"])
         
         
 
