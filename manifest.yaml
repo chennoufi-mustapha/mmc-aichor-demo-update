@@ -5,26 +5,30 @@ apiVersion: 0.2.2
 
 builder:
   image: image
-  context: smoke-test #   smoke-test folder
-  dockerfile: ./build/Dockerfile
+  context: smoke-test # smoke-test folder
+  dockerfile: ./build/ray.Dockerfile # need ray installed
 
 spec:
-  operator: jobset
+  operator: kuberay
   image: image
-  command: "python3 -u main.py --operator=jobset --sleep=3000"
-  engineName: main-gcp-dev-v2
+  command: "python3 -u main.py --operator=kuberay --sleep=3000 --tb-write=True"
 
+  debug:
+    jupyter: false
+
+  tensorboard:
+    enabled: true
 
   types:
-    master:
-      count: 2
+    Head:
       resources:
         cpus: 1
         ramRatio: 2
-        shmSizeGB: 0
-    worker:
-      count: 2
-      resources:
-        cpus: 1
-        ramRatio: 2
-        shmSizeGB: 0
+
+    Workers:
+      - name: cpu-workers
+        count: 1
+        resources:
+          cpus: 1
+          ramRatio: 2
+          shmSizeGB: 0
