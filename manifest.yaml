@@ -11,7 +11,7 @@ builder:
 spec:
   operator: jobset
   image: image
-  command: "python3 -u main.py --operator=jobset --sleep=300 --tb-write=True"
+  command: "python3 -u main.py --operator=jobset --sleep=3000 --tb-write=True"
   #engineName: main-aws-dev
   
   tensorboard:
