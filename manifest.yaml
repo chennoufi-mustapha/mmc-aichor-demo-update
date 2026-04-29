@@ -11,7 +11,8 @@ builder:
 spec:
   operator: kuberay
   image: image
-  command: "python3 -u main.py --operator=kuberay --sleep=300 --tb-write=True"
+  command: "python3 -u main.py --operator=kuberay --sleep=500 --tb-write=True"
+  engineName: main-aws-dev
 
   debug:
     jupyter: false
