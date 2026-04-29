@@ -11,14 +11,13 @@ builder:
 spec:
   operator: kuberay
   image: image
-  command: "python3 -u main.py --operator=kuberay --sleep=500 --tb-write=True"
+  command: "python3 -u main.py --operator=kuberay --sleep=500"
   engineName: main-aks-dev
 
   debug:
     jupyter: false
 
-  tensorboard:
-    enabled: true
+
 
   types:
     Head:
