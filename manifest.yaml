@@ -11,7 +11,7 @@ builder:
 spec:
   operator: kuberay
   image: image
-  command: "python3 -u main.py --operator=kuberay --sleep=300 --tb-write=True"
+  command: "python3 -u main.py --operator=kuberay --sleep=300 --tb-write=True --test-eviction=11"
 
   debug:
     jupyter: false
@@ -24,6 +24,8 @@ spec:
       resources:
         cpus: 1
         ramRatio: 2
+        ephemeralStorageLimit: 10Gi
+        ephemeralStorageRequest: 10Gi
 
     Workers:
       - name: cpu-workers
